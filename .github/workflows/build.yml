@@ -1,0 +1,18 @@
+name: build and run
+on: push
+jobs: 
+  test: 
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get Code   
+        uses: actions/checkout@v3      
+      - name: Build
+        run: |
+          mkdir build
+          cd build
+          cmake .. 
+          cmake --build . 
+      - name: run with static
+        run: ./Task/StaticMain
+      - name: run with shared
+        run: ./Task/SharedMain
