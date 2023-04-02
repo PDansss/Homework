@@ -13,6 +13,6 @@ jobs:
           cmake .. 
           cmake --build . 
       - name: run with static
-        run: ./build/Task/StaticMain
+        run: ./build/Homework-01/StaticMain
       - name: run with shared
-        run: ./build/Task/SharedMain
+        run: ./build/Homework-01/SharedMain
