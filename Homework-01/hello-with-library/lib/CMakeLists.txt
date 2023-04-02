@@ -1,6 +1,5 @@
 cmake_minimum_required(VERSION 3.5)
-
-project(library LANGUAGES CXX)
+project(Homework1)
 
 add_library(Static STATIC include/lib.h src/lib.cpp)
 set_target_properties(Static PROPERTIES PREFIX "")
