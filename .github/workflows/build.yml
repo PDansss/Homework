@@ -11,7 +11,8 @@ jobs:
           mkdir build
           cd build
           cmake .. 
-          cmake --build . 
+          cmake --build .
+          ctest
       - name: run with static
         run: ./build/Homework-01/StaticMain
       - name: run with shared
