@@ -1,4 +1,4 @@
-name: build and run on Ubuntu
+name: build and run
 on: push
 jobs: 
   test: 
@@ -11,9 +11,10 @@ jobs:
           mkdir build
           cd build
           cmake .. 
-          cmake --build .
-          ctest
+          cmake --build . 
+      - name: run without lib
+        run: ./build/Homework-01/hello/Main
       - name: run with static
-        run: ./build/Homework-01/StaticMain
+        run: ./build/Homework-01/hello-with-library/StaticMain
       - name: run with shared
-        run: ./build/Homework-01/SharedMain
+        run: ./build/Homework-01/hello-with-library/SharedMaindMain
