@@ -2,6 +2,8 @@
 
 ![badge](https://github.com/PDansss/Homework/actions/workflows/build.yml/badge.svg)
 
+<a hrer = "#"><img src = "https://github.com/PDansss/Homework/actions/workflows/build.yml/badge.svg">
+
 <h2>build</h2>
 <pre>
 mkdir build
