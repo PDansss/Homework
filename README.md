@@ -2,24 +2,31 @@
 
 ![badge](https://github.com/PDansss/Homework/actions/workflows/build.yml/badge.svg)
 
-## build 
+<h2>build</h2>
+<pre>
+mkdir build
+cd build
 cmake .. 
 cmake --build .
-
-<h2>Example of code</h2>
-
-<pre>
-    <div class="container">
-        <div class="block two first">
-            <h2>Your title</h2>
-            <div class="wrap">
-            //Your content
-            </div>
-        </div>
-    </div>
 </pre>
 
-## run
+<h2>run without library</h2>
+<pre>
 cd Homework-01
 cd hello
 ./Main
+</pre>
+
+<h2>run with static library</h2>
+<pre>
+cd Homework-01
+cd hello-with-lib
+./StaticMain
+</pre>
+
+<h2>run with shared library</h2>
+<pre>
+cd Homework-01
+cd hello-with-lib
+./SharedMain
+</pre>
