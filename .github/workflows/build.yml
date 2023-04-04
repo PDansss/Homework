@@ -1,4 +1,4 @@
-name: build and run
+name: build and run on Ubuntu
 on: push
 jobs: 
   test: 
@@ -17,4 +17,4 @@ jobs:
       - name: run with static
         run: ./build/Homework-01/hello-with-library/StaticMain
       - name: run with shared
-        run: ./build/Homework-01/hello-with-library/SharedMaindMain
+        run: ./build/Homework-01/hello-with-library/SharedMain
