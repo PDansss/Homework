@@ -1,8 +1,8 @@
 cmake_minimum_required(VERSION 3.5)
 project(Homework1)
 
-add_subdirectory(Homework-01)
-add_subdirectory(Homework-02)
+add_subdirectory(homework-01)
+add_subdirectory(homework-02)
 
 enable_testing()
 
