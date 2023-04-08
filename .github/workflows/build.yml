@@ -10,7 +10,7 @@ jobs:
           cd SDL
           mkdir build
           cd build 
-          cmake ..
+          cmake -DSDL_STATIC=ON -DSDL_SHARED=ON ..
           cmake --build .
           sudo cmake --install .
       - name: Get Code   
@@ -23,6 +23,6 @@ jobs:
           cmake --build .
           ctest
       - name: Run Static
-        run: ./build/Homework-02/my-sdl-static
+        run: ./build/homework-02/my_sdl_static
       - name: Run Shared
-        run: ./build/Homework-02/my-sdl-shared
+        run: ./build/homework-02/my_sdl_shared
