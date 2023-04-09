@@ -32,7 +32,3 @@ if(SHARED OR BOTH)
     target_link_libraries(my_sdl_shared PRIVATE SDL3::SDL3-shared)
     add_test(NAME check-exit-code-SDL-SHARED COMMAND my_sdl_shared)
 endif()
-
-
-
-
