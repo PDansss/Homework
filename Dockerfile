@@ -19,4 +19,6 @@ RUN apt-get update && \
     cmake .. && \
     cmake --build .
         
-CMD /app/build/my_sdl_shared && /app/build/my_sdl_static
+CMD /app/build/homework-01/hello/Main && /app/build/homework-01/hello-with-library/SharedMain && \
+    /app/build/homework-01/hello-with-library/StaticMain && \
+    /app/build/homework-02/my_sdl_shared && /app/build/homework-02/my_sdl_static
