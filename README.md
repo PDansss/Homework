@@ -9,3 +9,13 @@ cd build
 cmake .. 
 cmake --build .
 </pre>
+
+<h2>Тест SDL_DYNAMIC_API</h2>
+<pre>
+cd homework-02-test-dynapi
+mkdir build
+cd build
+cmake .. 
+cmake --build .
+export SDL_DYNAMIC_API= путь до so && ./SDL_STATIC && ./SDL_SHARED
+</pre>
