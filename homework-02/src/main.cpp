@@ -13,9 +13,9 @@ int main()
               << static_cast<int>(compiled.minor) << '.'
               << static_cast<int>(compiled.patch) << std::endl;
 
-    std::cout << "linked: " << static_cast<int>(compiled.major) << '.'
-              << static_cast<int>(compiled.minor) << '.'
-              << static_cast<int>(compiled.patch) << std::endl;
+    std::cout << "linked: " << static_cast<int>(linked.major) << '.'
+              << static_cast<int>(linked.minor) << '.'
+              << static_cast<int>(linked.patch) << std::endl;
 
     return !std::cout.good();
 }
