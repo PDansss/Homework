@@ -33,10 +33,10 @@ endif()
 if(SHARED OR BOTH)
     add_executable(my_sdl_shared src/main.cpp)
     
-    get_target_property(PATH_TO_SDL3_SHARED SDL3::SDL3 LOCATION)
+    get_target_property(PATH_TO_SDL3_SHARED SDL3::SDL3-shared LOCATION)
     message(STATUS "path to static libSDL3.so [${PATH_TO_SDL3_SHARED}]")
     target_compile_features(my_sdl_shared PUBLIC cxx_std_20)    
     
-    target_link_libraries(my_sdl_shared PRIVATE SDL3::SDL3)
+    target_link_libraries(my_sdl_shared PRIVATE SDL3::SDL3-shared)
     add_test(NAME check-exit-code-SDL-SHARED COMMAND my_sdl_shared)
 endif()
