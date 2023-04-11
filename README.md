@@ -17,5 +17,5 @@ mkdir build
 cd build
 cmake .. 
 cmake --build .
-export SDL_DYNAMIC_API= путь до so && ./SDL_STATIC && ./SDL_SHARED
+export SDL_DYNAMIC_API= путь до so
 </pre>
