@@ -7,8 +7,3 @@ target_link_libraries(SDL_STATIC PRIVATE SDL2::SDL2-static)
 
 add_executable(SDL_SHARED src/main.cpp)
 target_link_libraries(SDL_SHARED SDL2::SDL2)
-
-target_compile_features(SDL_STATIC PUBLIC cxx_std_20)
-
-
-
