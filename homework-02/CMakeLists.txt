@@ -32,6 +32,7 @@ endif()
 
 if(SHARED OR BOTH)
     add_executable(my_sdl_shared src/main.cpp)
+    target_compile_features(my_sdl_shared PUBLIC cxx_std_20)
     
     get_target_property(PATH_TO_SDL3_SHARED SDL3::SDL3-shared LOCATION)
     message(STATUS "path to static libSDL3.so [${PATH_TO_SDL3_SHARED}]")
