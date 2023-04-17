@@ -3,6 +3,7 @@ project(Homework1)
 
 add_subdirectory(homework-01)
 add_subdirectory(homework-02)
+add_subdirectory(homework-03)
 
 enable_testing()
 

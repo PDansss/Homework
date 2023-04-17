@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.5)
+project(HW3)
+add_subdirectory(01-simple-loop)
+add_subdirectory(02-engine-static)
+add_subdirectory(03-engine-shared)
+add_subdirectory(04-engine-hot-reload)
