@@ -22,5 +22,5 @@ export SDL_DYNAMIC_API= путь до so
 
 <h2>Демонстрация "горячей" перезагрузки</h2>
 <pre>
-https://www.youtube.com/watch?v=N3_F_8zG2gs
+<a href =https://www.youtube.com/watch?v=N3_F_8zG2gs>YouTube видео</a>
 </pre>
