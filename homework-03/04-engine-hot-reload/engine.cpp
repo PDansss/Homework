@@ -175,8 +175,8 @@ void clean_game(game* old, void*& game_library_handle)
         SDL_FunctionPointer delete_game_ptr =
             SDL_LoadFunction(game_library_handle, "delete_game");
         using func_delete_ptr = decltype(&delete_game);
-        auto Delete_game = reinterpret_cast<func_delete_ptr>(delete_game_ptr);
-        Delete_game(old);
+        auto delete_game = reinterpret_cast<func_delete_ptr>(delete_game_ptr);
+        delete_game(old);
     }
 }
 
