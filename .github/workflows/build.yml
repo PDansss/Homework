@@ -1,1 +1,28 @@
-
+name: build and run on Ubuntu
+on: push
+jobs: 
+  test: 
+    runs-on: ubuntu-latest
+    steps:
+      - name: SDL3
+        run: |
+          git clone https://github.com/libsdl-org/SDL
+          cd SDL
+          mkdir build
+          cd build 
+          cmake -DSDL_STATIC=ON -DSDL_SHARED=ON ..
+          cmake --build .
+          sudo cmake --install .
+      - name: Get Code   
+        uses: actions/checkout@v3
+      - name: Build
+        run: |
+          mkdir build
+          cd build 
+          cmake ..
+          cmake --build .
+          ctest
+      - name: Run Static
+        run: ./build/homework-02/my_sdl_static
+      - name: Run Shared
+        run: ./build/homework-02/my_sdl_shared
