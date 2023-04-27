@@ -85,15 +85,15 @@ void triangle::drow_rasterize_triangle(canvas&          canvas,
                                        vector<position> vertexes,
                                        color_rgb        color)
 {
-    vector<position*> pi = { &vertexes[0], &vertexes[1], &vertexes[2] };
+    vector<position*> pos = { &vertexes[0], &vertexes[1], &vertexes[2] };
 
-    sort(pi.begin(),
-         pi.end(),
+    sort(pos.begin(),
+         pos.end(),
          [](position* left, position* right) { return left->y < right->y; });
 
-    position& top    = *pi[0];
-    position& middle = *pi[1];
-    position& bottom = *pi[2];
+    position& top    = *pos[0];
+    position& middle = *pos[1];
+    position& bottom = *pos[2];
 
     vector<position> top_middle =
         side.pixels_line(top.x, top.y, middle.x, middle.y);
