@@ -13,8 +13,18 @@ vector<position> line::pixels_line(int x0, int y0, int x1, int y1)
 {
     vector<position> pixels_of_line;
 
-    auto drow_line_low = [&](int x0, int y0, int x1, int y1)
+    if (abs(x1 - x0) > abs(y1 - y0))
     {
+        if (x0 > x1)
+        {
+            int bx = x1;
+            int by = y1;
+            x1     = x0;
+            y1     = y0;
+            x0     = bx;
+            y0     = by;
+        }
+
         int dx = x1 - x0;
         int dy = y1 - y0;
 
@@ -38,10 +48,19 @@ vector<position> line::pixels_line(int x0, int y0, int x1, int y1)
             }
             D = D + 2 * dy;
         }
-    };
+    }
 
-    auto drow_line_high = [&](int x0, int y0, int x1, int y1)
+    else
     {
+        if (y0 > y1)
+        {
+            int bx = x1;
+            int by = y1;
+            x1     = x0;
+            y1     = y0;
+            x0     = bx;
+            y0     = by;
+        }
         int dx = x1 - x0;
         int dy = y1 - y0;
 
@@ -64,29 +83,6 @@ vector<position> line::pixels_line(int x0, int y0, int x1, int y1)
                 D -= 2 * dy;
             }
             D = D + 2 * dx;
-        }
-    };
-
-    if (abs(x1 - x0) >= abs(y1 - y0))
-    {
-        if (x0 > x1)
-        {
-            drow_line_low(x1, y1, x0, y0);
-        }
-        else
-        {
-            drow_line_low(x0, y0, x1, y1);
-        }
-    }
-    else
-    {
-        if (y0 > y1)
-        {
-            drow_line_high(x1, y1, x0, y0);
-        }
-        else
-        {
-            drow_line_high(x0, y0, x1, y1);
         }
     }
     return pixels_of_line;
