@@ -41,14 +41,17 @@ void canvas::set_pixel(int x, int y, color_rgb color)
     color_rgb&   pixel    = pixels.at(position);
     pixel                 = color;
 }
+
 void canvas::set_background_color(color_rgb color)
 {
     fill(pixels.begin(), pixels.end(), color);
 }
+
 unsigned int canvas::get_width()
 {
     return width;
 }
+
 unsigned int canvas::get_height()
 {
     return height;
