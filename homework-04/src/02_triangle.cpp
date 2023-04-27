@@ -129,21 +129,6 @@ void triangle::drow_triangle_interpolated(canvas&        canvas,
     vertex& middle = *pos[1];
     vertex& bottom = *pos[2];
 
-    vector<position> top_middle =
-        side.pixels_line(top.x, top.y, middle.x, middle.y);
-    vector<position> bottom_middle =
-        side.pixels_line(bottom.x, bottom.y, middle.x, middle.y);
-    vector<position> top_bottom =
-        side.pixels_line(top.x, top.y, bottom.x, bottom.y);
-
-    sort(top_middle.begin(),
-         top_middle.end(),
-         [](position& left, position& right) { return left.y < right.y; });
-
-    sort(bottom_middle.begin(),
-         bottom_middle.end(),
-         [](position& left, position& right) { return left.y < right.y; });
-
     int y = middle.y;
 
     vertex medium = interpolate_vertex(

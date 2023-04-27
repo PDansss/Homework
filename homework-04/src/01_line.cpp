@@ -67,7 +67,7 @@ vector<position> line::pixels_line(int x0, int y0, int x1, int y1)
         }
     };
 
-    if (abs(x1 - x0) > abs(y1 - y0))
+    if (abs(x1 - x0) >= abs(y1 - y0))
     {
         if (x0 > x1)
         {
