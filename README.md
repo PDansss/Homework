@@ -24,3 +24,8 @@ export SDL_DYNAMIC_API= путь до so
 <pre>
 <a href =https://www.youtube.com/watch?v=N3_F_8zG2gs>YouTube видео</a>
 </pre>
+
+<h2>Демонстрация простого шейдера</h2>
+<pre>
+<a href =https://www.youtube.com/watch?v=EZcvvfZIcSA>YouTube видео</a>
+</pre>
