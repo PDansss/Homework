@@ -1,5 +1,5 @@
 #include "02_triangle.h"
-
+#include <cmath>
 double interpolate(const double v1, const double v2, const double t)
 {
     return v1 + (v2 - v1) * t;
@@ -85,36 +85,102 @@ void triangle::drow_rasterize_triangle(canvas&          canvas,
                                        vector<position> vertexes,
                                        color_rgb        color)
 {
-    vector<position*> pos = { &vertexes[0], &vertexes[1], &vertexes[2] };
+    vector<position> pixels = pixels_inside_triangle(vertexes);
+    int              size   = pixels.size();
+    for (int i = 0; i < size; i++)
+    {
+        canvas.set_pixel(pixels[i].x, pixels[i].y, color);
+    }
+}
 
-    sort(pos.begin(),
-         pos.end(),
+void triangle::drow_rasterize_triangle_indexed(canvas&          canvas,
+                                               vector<position> vertexes,
+                                               vector<int>      indexes,
+                                               color_rgb        color)
+{
+    int              size = indexes.size() / 3;
+    vector<position> pixels;
+    for (int i = 0; i < size; i++)
+    {
+        int index0 = indexes[i * 3];
+        int index1 = indexes[i * 3 + 1];
+        int index2 = indexes[i * 3 + 2];
+        drow_rasterize_triangle(
+            canvas,
+            { vertexes[index0], vertexes[index1], vertexes[index2] },
+            color);
+    }
+}
+
+void triangle::drow_rasterize_triangle_vertex_indexed(canvas&        canvas,
+                                                      vector<vertex> vertexes,
+                                                      vector<int>    indexes,
+                                                      color_rgb      color)
+{
+    int size = indexes.size() / 3;
+    for (int i = 0; i < size; i++)
+    {
+        int    index0 = indexes[i * 3];
+        int    index1 = indexes[i * 3 + 1];
+        int    index2 = indexes[i * 3 + 2];
+        vertex v0     = vertexes[index0];
+        vertex v1     = vertexes[index1];
+        vertex v2     = vertexes[index2];
+
+        drow_rasterize_triangle(
+            canvas,
+            { { static_cast<int>(round(v0.x)), static_cast<int>(round(v0.y)) },
+              { static_cast<int>(round(v1.x)), static_cast<int>(round(v1.y)) },
+              { static_cast<int>(round(v2.x)),
+                static_cast<int>(round(v2.y)) } },
+            color);
+    }
+}
+
+vector<position> triangle::pixels_inside_triangle(vector<position> vertexes)
+{
+    vector<position*> pi = { &vertexes[0], &vertexes[1], &vertexes[2] };
+    sort(pi.begin(),
+         pi.end(),
          [](position* left, position* right) { return left->y < right->y; });
 
-    position& top    = *pos[0];
-    position& middle = *pos[1];
-    position& bottom = *pos[2];
+    position& top    = *pi[0];
+    position& middle = *pi[1];
+    position& bottom = *pi[2];
 
     vector<position> top_middle =
         side.pixels_line(top.x, top.y, middle.x, middle.y);
     vector<position> bottom_middle =
         side.pixels_line(bottom.x, bottom.y, middle.x, middle.y);
 
+    vector<position> result;
+
     int dx = bottom.x - top.x;
     int dy = bottom.y - top.y;
     int c  = top.y * bottom.x - top.x * bottom.y;
 
-    for (int i = 0; i < top_middle.size(); i++)
+    if (dy != 0)
     {
-        int x = (top_middle[i].y * dx - c) / dy;
-        side.drow_line(canvas, top_middle[i], { x, top_middle[i].y }, color);
+        for (int i = 0; i < top_middle.size(); i++)
+        {
+            int              x      = (top_middle[i].y * dx - c) / dy;
+            vector<position> pixels = side.pixels_line(
+                top_middle[i].x, top_middle[i].y, x, top_middle[i].y);
+            result.insert(result.end(), pixels.begin(), pixels.end());
+        }
+        for (int i = 0; i < bottom_middle.size(); i++)
+        {
+            int              x      = (bottom_middle[i].y * dx - c) / dy;
+            vector<position> pixels = side.pixels_line(
+                bottom_middle[i].x, bottom_middle[i].y, x, bottom_middle[i].y);
+            result.insert(result.end(), pixels.begin(), pixels.end());
+        }
     }
-    for (int i = 0; i < bottom_middle.size(); i++)
+    else
     {
-        int x = (bottom_middle[i].y * dx - c) / dy;
-        side.drow_line(
-            canvas, bottom_middle[i], { x, bottom_middle[i].y }, color);
+        result = side.pixels_line(top.x, top.y, bottom.x, bottom.y);
     }
+    return result;
 }
 
 void triangle::drow_triangle_interpolated(canvas&        canvas,

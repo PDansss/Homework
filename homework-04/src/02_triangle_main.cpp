@@ -8,12 +8,12 @@ int main(int, char**)
 
     triangle trian;
     trian.drow_triangle(
-        img1, { { 10, 10 }, { 100, 250 }, { 254, 345 } }, { 255, 255, 0 });
+        img1, { { 0, 0 }, { 490, 0 }, { 0, 499 } }, { 255, 255, 0 });
     img1.save_image("simple_triangle.ppm");
     img1.set_background_color({ 0, 0, 0 });
 
     trian.drow_rasterize_triangle(
-        img1, { { 10, 10 }, { 100, 250 }, { 254, 345 } }, { 255, 255, 0 });
+        img1, { { { 0, 0 }, { 490, 0 }, { 0, 499 } } }, { 255, 255, 0 });
     img1.save_image("rasterized_triangle.ppm");
     img1.set_background_color({ 0, 0, 0 });
 
@@ -54,11 +54,10 @@ int main(int, char**)
     img1.save_image("triangle_with_index_and_vertex_buffer.ppm");
 
     img1.set_background_color({ 0, 0, 0 });
-    trian.drow_triangle_interpolated(img1,
-                                     { { 23, 45, 255, 0, 0 },
-                                       { 390, 450, 0, 255, 0 },
-                                       { 300, 150, 0, 0, 255 } });
-    img1.save_image("triangle_interpolated.ppm");
 
+    trian.drow_triangle_interpolated(
+        img1,
+        { { 0, 0, 255, 0, 0 }, { 0, 499, 0, 255, 0 }, { 499, 0, 0, 0, 255 } });
+    img1.save_image("triangle_interpolated.ppm");
     return 0;
 }

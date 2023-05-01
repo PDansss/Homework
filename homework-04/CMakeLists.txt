@@ -31,6 +31,20 @@ add_executable(
 
 target_include_directories(triangle PUBLIC ${CMAKE_CURRENT_LIST_DIR}/include)
 
+find_package(SDL3 REQUIRED)
+add_executable(
+  gfx_program
+  src/00_canvas.cpp
+  src/01_line.cpp
+  src/02_triangle.cpp
+  src/03_gfx_program_main.cpp
+  src/03_gfx_program.cpp
+  include/03_gfx_program.h
+)
+target_link_libraries(gfx_program PRIVATE SDL3::SDL3-shared)
+target_include_directories(gfx_program PUBLIC ${CMAKE_CURRENT_LIST_DIR}/include)
+
 target_compile_features(canvas PUBLIC cxx_std_20)
 target_compile_features(line PUBLIC cxx_std_20)
 target_compile_features(triangle PUBLIC cxx_std_20)
+target_compile_features(gfx_program PUBLIC cxx_std_20)

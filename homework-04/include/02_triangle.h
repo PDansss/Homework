@@ -35,7 +35,18 @@ public:
                                  vector<position> vertexes,
                                  color_rgb        color);
 
+    void drow_rasterize_triangle_indexed(canvas&          canvas,
+                                         vector<position> vertexes,
+                                         vector<int>      indexes,
+                                         color_rgb        color);
+
+    void drow_rasterize_triangle_vertex_indexed(canvas&        canvas,
+                                                vector<vertex> vertexes,
+                                                vector<int>    indexes,
+                                                color_rgb      color);
+
     void drow_triangle_interpolated(canvas& canvas, vector<vertex> vertexes);
+    vector<position> pixels_inside_triangle(vector<position> vertexes);
 
 private:
     line side;
