@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 3.5)
+project(HW5)
+add_subdirectory(opengl-min)
+add_subdirectory(opengl-triangle)
+add_subdirectory(opengl-gxf-program)

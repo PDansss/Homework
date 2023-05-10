@@ -1,0 +1,36 @@
+#version 300 es
+precision mediump float;
+layout (location = 0) in vec4 VertexPos;
+layout (location = 1) in vec4 VertexColor;
+out vec4 Color;
+
+uniform float time;
+uniform float mouse_x;
+uniform float mouse_y;
+
+uniform float depth;
+uniform float size;
+
+void main(){
+     float angile = time * 0.001;
+     
+     mat2 rotate = mat2(cos(angile),-sin(angile),sin(angile),cos(angile));
+     
+     vec2 pos = vec2(VertexPos.x,VertexPos.y);
+     
+     float pulse = (sin(time * 0.004) / depth) + size;
+     
+     pos = rotate * pos;
+     
+     float dx = mouse_x - pos.x;  
+     float dy = mouse_y - pos.y;
+
+     if(dx*dx + dy*dy < 0.1f){    	
+     	Color = vec4(1.0f,1.0f,0.0f,1.0f);     
+     }
+     else{ 	
+     	Color = vec4((sin(time * 0.001) / 2.0f) + VertexColor.r,(cos(time * 0.001) / 2.0f) + VertexColor.g,(cos(time * 0.001) / 2.0f) + VertexColor.b,1.0f);       
+     }
+     gl_Position = vec4(pos.x,pos.y * pulse ,0.0f,1.0f);
+     
+}
