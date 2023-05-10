@@ -29,3 +29,8 @@ export SDL_DYNAMIC_API= путь до so
 <pre>
 <a href =https://www.youtube.com/watch?v=EZcvvfZIcSA>YouTube видео</a>
 </pre>
+
+<h2>Демонстрация простого шейдера на OpenGL</h2>
+<pre>
+<a href = https://www.youtube.com/watch?v=H3grzIMDpTk>YouTube видео</a>
+</pre>
