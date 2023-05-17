@@ -1,0 +1,25 @@
+#version 300 es
+precision mediump float;
+layout (location = 0) in vec4 figure1_Pos;
+layout (location = 1) in vec4 figure1_color;
+
+layout (location = 2) in vec4 figure2_Pos;
+layout (location = 3) in vec4 figure2_color;
+
+layout (location = 4) in vec4 figure3_Pos;
+layout (location = 5) in vec4 figure3_color;
+
+out vec4 v_color;
+
+uniform float theta;
+
+void main(){
+    if(theta >= 0.0f){
+        v_color = mix(figure1_color, figure2_color, theta);
+        gl_Position = mix(figure1_Pos, figure2_Pos, theta);
+    }
+    else{
+        v_color = mix(figure3_color, figure1_color, 1.0f + theta);
+        gl_Position = mix(figure3_Pos, figure1_Pos, 1.0f + theta);
+    }
+}
